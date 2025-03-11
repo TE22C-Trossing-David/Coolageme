@@ -34,6 +34,7 @@ public class MonkeyScript : MonoBehaviour
 
     bool newEnemySpawned;
 
+    float dSqrToTarget;
 
     // Update is called once per frame
     void Update()
@@ -53,22 +54,25 @@ public class MonkeyScript : MonoBehaviour
         {
             enemies = GameObject.FindGameObjectsWithTag("Enemy").Select(go => go.transform).ToList();
 
-            float closestDistanceSqr = Mathf.Infinity;
+            float closestDistanceSqr = 100;
             Vector3 currentPosition = transform.position;
+
             foreach (Transform potentialTarget in enemies)
             {
                 Vector3 directionToTarget = potentialTarget.position - currentPosition;
-                float dSqrToTarget = directionToTarget.sqrMagnitude;
+                dSqrToTarget = directionToTarget.sqrMagnitude;
                 if (dSqrToTarget < closestDistanceSqr)
                 {
                     closestDistanceSqr = dSqrToTarget;
                     closestEnemy = potentialTarget;
                 }
+
+                if (directionToTarget.magnitude > closestDistanceSqr)
+                {
+                    transform.right = closestEnemy.position - transform.position;
+                }
             }
             enemyLocated = true;
-
-
-            transform.right = closestEnemy.position - transform.position;
         }
     }
 }
