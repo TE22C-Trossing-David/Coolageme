@@ -7,39 +7,40 @@ using UnityEngine;
 
 public class MonkeyScript : MonoBehaviour
 {
+    //Monkey Stats
+    [SerializeField]
+    float atkSpeed = 1;
+
+    [SerializeField]
+    float range = 3;
+
+    [SerializeField]
+    int cost = 100;
 
     bool monkeyPlaced = false;
+
     [SerializeField]
     Transform monkeyTransform;
 
     UnityEngine.Vector3 yCamera = new Vector3(0, 0, 10);
 
-    List<Vector3> enemyDistnaces = new List<Vector3>();
-
-    Vector3 currentDistance = new Vector3();
-    Vector3 closestDistance = new Vector3();
-
-    [SerializeField]
-    GameObject tempmonkey;
-
-    bool monkeynotplaced = true;
-
     bool enemyLocated = false;
-
-    bool firstTime = true;
 
     List<Transform> enemies;
 
+    float distanceToCurrentClosest;
+
     Transform closestEnemy = null;
 
-    bool newEnemySpawned;
+    void Start()
+    {
+        distanceToCurrentClosest = range;
+    }
 
-    float dSqrToTarget;
-
-    // Update is called once per frame
     void Update()
     {
-        UnityEngine.Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition) + yCamera;
+        UnityEngine.Vector3 mousePos =
+            Camera.main.ScreenToWorldPoint(Input.mousePosition) + yCamera;
 
         if (monkeyPlaced == false)
         {
@@ -52,22 +53,26 @@ public class MonkeyScript : MonoBehaviour
 
         if (monkeyPlaced)
         {
-            enemies = GameObject.FindGameObjectsWithTag("Enemy").Select(go => go.transform).ToList();
-
-            float closestDistanceSqr = 100;
-            Vector3 currentPosition = transform.position;
+            Vector3 monkeyPosition = transform.position;
+            enemies = GameObject
+                .FindGameObjectsWithTag("Enemy")
+                .Select(go => go.transform)
+                .ToList();
+            if (!enemyLocated)
+                closestEnemy = enemies[0];
 
             foreach (Transform potentialTarget in enemies)
             {
-                Vector3 directionToTarget = potentialTarget.position - currentPosition;
-                dSqrToTarget = directionToTarget.sqrMagnitude;
-                if (dSqrToTarget < closestDistanceSqr)
+                float distanceToTarget = Vector3.Distance(potentialTarget.position, monkeyPosition);
+
+                if (distanceToTarget < distanceToCurrentClosest)
                 {
-                    closestDistanceSqr = dSqrToTarget;
                     closestEnemy = potentialTarget;
                 }
 
-                if (directionToTarget.magnitude > closestDistanceSqr)
+                distanceToCurrentClosest = Vector3.Distance(closestEnemy.position, monkeyPosition);
+
+                if (range >= distanceToCurrentClosest)
                 {
                     transform.right = closestEnemy.position - transform.position;
                 }

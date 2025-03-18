@@ -13,10 +13,21 @@ using Vector2 = UnityEngine.Vector2;
 
 public class MonkeyManager : MonoBehaviour
 {
-
     public List<GameObject> monkeyPrefabs = new List<GameObject>();
 
-    Vector2 ButtonPosition = new Vector2(-840, 400);
+    [SerializeField]
+    float buttonPosX;
+
+    [SerializeField]
+    float buttonPosY;
+
+    [SerializeField]
+    float buttonPaddingX;
+
+    [SerializeField]
+    float buttonPaddingY;
+
+    Vector2 ButtonPosition = new Vector2();
 
     [SerializeField]
     GameObject ButtonPrefab;
@@ -26,34 +37,31 @@ public class MonkeyManager : MonoBehaviour
 
     public int savedNumber;
 
-
-
     void Start()
     {
+        ButtonPosition.x = buttonPosX;
+        ButtonPosition.y = buttonPosY;
         int buttonNumber = 0;
 
         for (int i = 0; i < monkeyPrefabs.Count / 2; i++)
         {
             for (int o = 0; o < 2; o++)
             {
-                ButtonPosition.x += o * 200;
+                ButtonPosition.x += o * buttonPaddingX;
                 GameObject btn = Instantiate(ButtonPrefab, ButtonPosition, Quaternion.identity);
-                btn.transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform, false);
+                btn.transform.SetParent(
+                    GameObject.FindGameObjectWithTag("Canvas").transform,
+                    false
+                );
                 btn.GetComponent<SmallMonkeyManager>().monkeyNumber = buttonNumber;
                 buttonNumber++;
             }
-            ButtonPosition.x -= 200;
-            ButtonPosition.y -= 200;
+            ButtonPosition.x -= buttonPaddingX;
+            ButtonPosition.y -= buttonPaddingY;
         }
 
         GameObject cool = monkeyPrefabs[1];
     }
 
-    void Update()
-    {
-
-
-    }
-
-
+    void Update() { }
 }

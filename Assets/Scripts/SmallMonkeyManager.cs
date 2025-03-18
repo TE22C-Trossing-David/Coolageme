@@ -19,28 +19,29 @@ public class SmallMonkeyManager : MonoBehaviour
     GameObject monkeyManager;
 
     List<GameObject> mp;
-    int savedNumber;
+    public int savedNumber;
 
     Vector3 yCamera = new Vector3(0, 0, 10);
 
+    Image monkeyImage;
+    Sprite monkeySprite;
+
     void Start()
     {
-
         monkeyManager = GameObject.Find("MonkeyManager");
         mp = monkeyManager.GetComponent<MonkeyManager>().monkeyPrefabs;
         savedNumber = monkeyManager.GetComponent<MonkeyManager>().savedNumber;
     }
-
 
     public void ButtonClicked()
     {
         monkeyManager.GetComponent<MonkeyManager>().savedNumber = monkeyNumber;
     }
 
-
     public void SpawnDude()
     {
-        UnityEngine.Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition) + yCamera;
+        UnityEngine.Vector3 mousePos =
+            Camera.main.ScreenToWorldPoint(Input.mousePosition) + yCamera;
         GameObject mnk = Instantiate(mp[monkeyNumber], mousePos, Quaternion.identity);
         // mnk.transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform, false);
     }
