@@ -32,6 +32,8 @@ public class MonkeyScript : MonoBehaviour
 
     Transform closestEnemy = null;
 
+    Transform rangeCircle;
+
     void Start()
     {
         distanceToCurrentClosest = range;
@@ -49,10 +51,13 @@ public class MonkeyScript : MonoBehaviour
             {
                 monkeyPlaced = true;
             }
+            transform.GetChild(0).gameObject.SetActive(true);
         }
 
         if (monkeyPlaced)
         {
+            transform.GetChild(0).gameObject.SetActive(false);
+
             Vector3 monkeyPosition = transform.position;
             enemies = GameObject
                 .FindGameObjectsWithTag("Enemy")
@@ -79,5 +84,10 @@ public class MonkeyScript : MonoBehaviour
             }
             enemyLocated = true;
         }
+    }
+
+    public void OpenInfo()
+    {
+        Debug.Log("yaho");
     }
 }

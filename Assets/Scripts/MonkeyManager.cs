@@ -49,10 +49,7 @@ public class MonkeyManager : MonoBehaviour
             {
                 ButtonPosition.x += o * buttonPaddingX;
                 GameObject btn = Instantiate(ButtonPrefab, ButtonPosition, Quaternion.identity);
-                btn.transform.SetParent(
-                    GameObject.FindGameObjectWithTag("Canvas").transform,
-                    false
-                );
+                btn.transform.SetParent(GameObject.Find("Buttons").transform, false);
                 btn.GetComponent<SmallMonkeyManager>().monkeyNumber = buttonNumber;
                 buttonNumber++;
             }

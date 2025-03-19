@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 482612580901180033}
   - component: {fileID: 3442530889958707031}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Range
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 1648030867738980360}
   - component: {fileID: 7535948196190227639}
   - component: {fileID: 886587612536740305}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: GlueMonkey
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -42,7 +42,11 @@ public class SmallMonkeyManager : MonoBehaviour
     {
         UnityEngine.Vector3 mousePos =
             Camera.main.ScreenToWorldPoint(Input.mousePosition) + yCamera;
-        GameObject mnk = Instantiate(mp[monkeyNumber], mousePos, Quaternion.identity);
-        // mnk.transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform, false);
+        GameObject mnk = Instantiate(
+            mp[monkeyNumber],
+            mousePos,
+            Quaternion.identity,
+            GameObject.Find("Monkeys").transform
+        );
     }
 }

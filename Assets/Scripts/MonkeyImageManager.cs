@@ -1,11 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Net.Mail;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
-using Quaternion = UnityEngine.Quaternion;
-using Vector3 = UnityEngine.Vector3;
 
 public class MonkeyImageManager : MonoBehaviour
 {
@@ -18,17 +13,19 @@ public class MonkeyImageManager : MonoBehaviour
 
     List<GameObject> mp;
 
-    Image monkeyImage;
+    UnityEngine.UI.Image monkeyImage;
     Sprite monkeySprite;
 
-    void Update()
+    void Start()
     {
         monkeyManager = GameObject.Find("MonkeyManager");
         mp = monkeyManager.GetComponent<MonkeyManager>().monkeyPrefabs;
         savedNumber = GetComponentInParent<SmallMonkeyManager>().monkeyNumber;
         monkeySprite = mp[savedNumber].GetComponent<SpriteRenderer>().sprite;
 
-        // monkeyImage = GetComponent<Image>();
-        monkeyImage.image = monkeySprite.texture;
+        monkeyImage = transform.GetComponent<UnityEngine.UI.Image>();
+        monkeyImage.sprite = monkeySprite;
+
+        monkeyImage.SetNativeSize();
     }
 }
