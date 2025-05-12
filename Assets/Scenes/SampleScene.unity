@@ -525,10 +525,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1800300583}
     m_Modifications:
-    - target: {fileID: -3839441991399632308, guid: 5b045ea2dfb6be6458b2c957b84e771d, type: 3}
-      propertyPath: enemyTransform
-      value: 
-      objectReference: {fileID: 909670263}
     - target: {fileID: 8169113962837076488, guid: 5b045ea2dfb6be6458b2c957b84e771d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.48
@@ -620,6 +616,7 @@ GameObject:
   - component: {fileID: 402791553}
   - component: {fileID: 402791555}
   - component: {fileID: 402791554}
+  - component: {fileID: 402791556}
   m_Layer: 5
   m_Name: HealthText
   m_TagString: Untagged
@@ -743,6 +740,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 402791552}
   m_CullTransparentMesh: 1
+--- !u!114 &402791556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 402791552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84cd0e8c071331342b981620a0a983ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hpText: {fileID: 402791554}
+  currentHp: 140
 --- !u!1 &403724766
 GameObject:
   m_ObjectHideFlags: 0
@@ -813,10 +824,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1800300583}
     m_Modifications:
-    - target: {fileID: -3839441991399632308, guid: 5b045ea2dfb6be6458b2c957b84e771d, type: 3}
-      propertyPath: enemyTransform
-      value: 
-      objectReference: {fileID: 1078626831}
     - target: {fileID: 8169113962837076488, guid: 5b045ea2dfb6be6458b2c957b84e771d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.51
@@ -1237,10 +1244,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1800300583}
     m_Modifications:
-    - target: {fileID: -3839441991399632308, guid: 5b045ea2dfb6be6458b2c957b84e771d, type: 3}
-      propertyPath: enemyTransform
-      value: 
-      objectReference: {fileID: 201490360}
     - target: {fileID: 8169113962837076488, guid: 5b045ea2dfb6be6458b2c957b84e771d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.48
@@ -1546,10 +1549,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1800300583}
     m_Modifications:
-    - target: {fileID: -3839441991399632308, guid: 5b045ea2dfb6be6458b2c957b84e771d, type: 3}
-      propertyPath: enemyTransform
-      value: 
-      objectReference: {fileID: 866091467}
     - target: {fileID: 8169113962837076488, guid: 5b045ea2dfb6be6458b2c957b84e771d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.51
@@ -1929,7 +1928,7 @@ Transform:
   m_GameObject: {fileID: 1197039865}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.3, y: -0.15, z: 0}
+  m_LocalPosition: {x: 10.26, y: -0.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1943,10 +1942,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1800300583}
     m_Modifications:
-    - target: {fileID: -3839441991399632308, guid: 5b045ea2dfb6be6458b2c957b84e771d, type: 3}
-      propertyPath: enemyTransform
-      value: 
-      objectReference: {fileID: 1521296338}
     - target: {fileID: 8169113962837076488, guid: 5b045ea2dfb6be6458b2c957b84e771d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.51
